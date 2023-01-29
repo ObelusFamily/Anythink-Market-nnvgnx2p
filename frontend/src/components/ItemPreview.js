@@ -37,7 +37,7 @@ const ItemPreview = (props) => {
     >
       <img
         alt="item"
-        src={item.image}
+        src={!item.image ? "placeholder.png" : item.image }
         className="card-img-top item-img"
         style={{ borderRadius: "20px" }}
         onError={({ currentTarget }) => {
@@ -56,10 +56,7 @@ const ItemPreview = (props) => {
               src={item.seller.image}
               alt={item.seller.username}
               className="user-pic rounded-circle pr-1"
-              onError={({ currentTarget }) => {
-                currentTarget.onerror = null; // prevents looping
-                currentTarget.src="placeholder.png";
-              }}
+
             />
           </Link>
           <button className="btn btn-outline-secondary" onClick={handleClick}>
