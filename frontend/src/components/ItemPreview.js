@@ -40,6 +40,10 @@ const ItemPreview = (props) => {
         src={item.image}
         className="card-img-top item-img"
         style={{ borderRadius: "20px" }}
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null; // prevents looping
+          currentTarget.src="placeholder.png";
+        }}
       />
       <div className="card-body">
         <Link to={`/item/${item.slug}`} className="text-white">
@@ -52,6 +56,10 @@ const ItemPreview = (props) => {
               src={item.seller.image}
               alt={item.seller.username}
               className="user-pic rounded-circle pr-1"
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null; // prevents looping
+                currentTarget.src="placeholder.png";
+              }}
             />
           </Link>
           <button className="btn btn-outline-secondary" onClick={handleClick}>

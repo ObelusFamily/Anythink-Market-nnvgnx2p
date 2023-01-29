@@ -52,6 +52,10 @@ class Item extends React.Component {
                 alt={this.props.item.title}
                 className="item-img"
                 style={{ height: "500px", width: "100%", borderRadius: "6px" }}
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null; // prevents looping
+                  currentTarget.src="https://via.placeholder.com/150";
+                }}
               />
             </div>
 
